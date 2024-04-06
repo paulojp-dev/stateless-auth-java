@@ -2,6 +2,27 @@ spring:
   application:
     name: name=stateless-auth-api
 
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:auth-db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    tomcat:
+      max-active: 3
+
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+      platform: postgresql
+
+  jpa:
+    show-sql: true # Disable in production
+    hibernate:
+      ddl-auto: create-drop # Danger: You don't must use "create-drop" in the production!
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgresSQL9Dialect
+
 server:
   port: ${PORT:8080}
-
