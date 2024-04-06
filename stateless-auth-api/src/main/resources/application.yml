@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: name=stateless-auth-api
+
+server:
+  port: ${PORT:8080}
+
