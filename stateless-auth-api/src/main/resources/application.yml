@@ -22,7 +22,7 @@ spring:
       ddl-auto: create-drop # Danger: You don't must use "create-drop" in the production!
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgresSQL9Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 server:
   port: ${PORT:8080}
