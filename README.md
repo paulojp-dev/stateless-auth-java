@@ -24,3 +24,6 @@
 - stateless-auth-api [link](http://0.0.0.0:8080/swagger-ui/index.html)
 - stateless-any-api [link](http://0.0.0.0:8081/swagger-ui/index.html)
 - stateless-auth-db
+
+## References
+- [Course - Autenticação Stateful e Stateless em Microsserviços](https://www.udemy.com/course/autenticacao-stateful-stateless-microsservicos/)
