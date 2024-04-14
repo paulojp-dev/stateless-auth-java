@@ -1,11 +1,15 @@
 # Stateless Authentication (Java)
 
+## Flow
+![Diagram](./resource/diagram.png)
+
 ### Tecnology
 - [Java 17](https://jdk.java.net/17/)
 - [Spring Boot 3.2.4](https://spring.io/blog/2024/03/21/spring-boot-3-2-4-available-now)
 - [Gradle 8.7](https://docs.gradle.org/current/release-notes.html)
 - Postgres (latest)
 - Swagger
+- Docker
 
 ### Build
 1. Intall **Python 3**
@@ -20,6 +24,3 @@
 - stateless-auth-api [link](http://0.0.0.0:8080/swagger-ui/index.html)
 - stateless-any-api [link](http://0.0.0.0:8081/swagger-ui/index.html)
 - stateless-auth-db
-
-## Diagram
-![Diagram](./resource/diagram.png)
