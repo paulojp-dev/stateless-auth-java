@@ -6,8 +6,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: stateless-auth
     networks:
-      - auth
+      - stateless-auth
     ports:
       - "8080:8080"
     volumes:
@@ -23,10 +24,10 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     networks:
-      - auth
+      - stateless-auth
     ports:
       - "5432:5432"
 
 networks:
-  auth:
+  stateless-auth:
     driver: bridge
