@@ -8,11 +8,13 @@ services:
       dockerfile: Dockerfile
     image: stateless-auth
     environment:
+      PORT: 8080
       DB_HOST: stateless-auth-db
       DB_PORT: 5432
       DB_NAME: auth-db
       DB_USER: postgres
       DB_PASSWORD: postgres
+      JWT_SECRET_KEY: gJCGMWNVlEQdk4L6FYQf0ndTyme7y0jR
     networks:
       - stateless-auth
     ports:
@@ -40,6 +42,9 @@ services:
       context: "./stateless-any-api"
       dockerfile: Dockerfile
     image: stateless-any
+    environment:
+      PORT: 8081
+      JWT_SECRET_KEY: gJCGMWNVlEQdk4L6FYQf0ndTyme7y0jR
     networks:
       - stateless-auth
     ports:
