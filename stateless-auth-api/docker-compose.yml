@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  stateless-auth:
+    container_name: stateless-auth
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - auth
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app
+    depends_on:
+      - stateless-auth-db
+
+  stateless-auth-db:
+    container_name: stateless-auth-db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: auth-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - auth
+    ports:
+      - "5432:5432"
+
+networks:
+  auth:
+    driver: bridge
