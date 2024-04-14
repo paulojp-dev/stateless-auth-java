@@ -6,7 +6,7 @@ threads = []
 def build_application(app):
     threads.append(app)
     print("Building application {}".format(app))
-    os.system("./gradlew build".format(app))
+    os.system("cd {} && ./gradlew build".format(app))
     print("Application {} finished building!".format(app))
     threads.remove(app)
 
@@ -19,21 +19,14 @@ def docker_compose_up():
 
 def build_all_applications():
     print("Starting application build!")
-    threading.Thread(target=build_application,
-                     args={"stateless-auth-api"}).start()
+    build_application("stateless-auth-api")
+    build_application("stateless-any-api")
+    print("\n")
 
 
 def remove_containers():
     print("Removing containers.")
     os.system("docker-compose down")
-    containers = os.popen('docker ps -a --format "{{.ID}}\t{{.Names}}" | grep "stateless-auth-" | cut -f1').read().split('\n')
-    containers.remove('')
-    if len(containers) > 0:
-        print("There are still {} containers created".format(containers))
-        for container in containers:
-            print("Stopping container {}".format(container))
-            os.system("docker container stop {}".format(container))
-        # os.system("docker container prune -f")
 
 
 if __name__ == "__main__":

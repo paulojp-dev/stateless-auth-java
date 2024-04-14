@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  stateless-auth:
-    container_name: stateless-auth
+  stateless-auth-api:
+    container_name: stateless-auth-api
     build:
-      context: .
+      context: "./stateless-auth-api"
       dockerfile: Dockerfile
     image: stateless-auth
     environment:
@@ -33,6 +33,19 @@ services:
       - stateless-auth
     ports:
       - "5432:5432"
+
+  stateless-any-api:
+    container_name: stateless-any-api
+    build:
+      context: "./stateless-any-api"
+      dockerfile: Dockerfile
+    image: stateless-any
+    networks:
+      - stateless-auth
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./:/app
 
 networks:
   stateless-auth:
